@@ -3,6 +3,7 @@ import datetime
 import pickle
 import os.path
 import os
+import sys
 import math
 from time import time
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, JobQueue
@@ -26,8 +27,9 @@ updater = Updater(token=os.environ['INTERSTELLAR_BOT_TOKEN'],
 job_queue = updater.job_queue
 dispatcher = updater.dispatcher
 
-FILENAME = 'date.dat'
-QUEUE_FILENAME = 'queue.dat'
+CUR_DIR = os.path.dirname(os.path.realpath(sys.argv[0]))
+FILENAME = CUR_DIR + '/date.dat'
+QUEUE_FILENAME = CUR_DIR + '/queue.dat'
 DAILY_TIME = datetime.time(10)
 
 
